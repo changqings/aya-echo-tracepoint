@@ -21,7 +21,7 @@ pub struct Buf {
 #[map]
 pub static mut BUF: PerCpuArray<Buf> = PerCpuArray::with_max_entries(1, 0);
 
-#[tracepoint(name = "echo")]
+#[tracepoint]
 pub fn echo_trace_open(ctx: TracePointContext) -> c_long {
     match try_echo_trace_open(ctx) {
         Ok(ret) => ret,
@@ -53,7 +53,6 @@ fn try_echo_trace_open(ctx: TracePointContext) -> Result<c_long, c_long> {
         // log the filename
         info!(&ctx, "open {}", filename);
     }
-
     Ok(0)
 }
 

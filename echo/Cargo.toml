@@ -5,15 +5,19 @@ edition = "2021"
 publish = false
 
 [dependencies]
-aya = { git = "https://github.com/aya-rs/aya", branch="main" }
-aya-log = { git = "https://github.com/aya-rs/aya", branch="main" }
+aya = { git = "https://github.com/aya-rs/aya", features = ["async_tokio"] }
+aya-log = { git = "https://github.com/aya-rs/aya"}
 echo-common = { path = "../echo-common", features=["user"] }
-anyhow = "1.0.42"
 
+anyhow = "1.0.42"
+env_logger = "0.11.2"
 log = "0.4"
-simplelog = "0.11"
+libc = "0.2"
+
+simplelog = "0.12.1"
 structopt = { version = "0.3" }
-tokio = { version = "1.5.0", features = ["macros", "rt", "rt-multi-thread", "net", "signal"] }
+
+tokio = { version = "1.25", features = ["macros", "rt", "rt-multi-thread", "net", "signal"] }
 
 [[bin]]
 name = "echo"
